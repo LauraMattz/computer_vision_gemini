@@ -1,0 +1,7 @@
+{
+  "name": "Gemini Vision AI",
+  "description": "Aplicação de visão computacional que identifica objetos em tempo real usando a câmera e a API Gemini.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

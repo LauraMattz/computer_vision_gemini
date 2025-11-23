@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Vision AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'hud-black': '#050505',
+              'hud-dark': '#0a0f14',
+              'hud-green': '#00ff41',
+              'hud-green-dim': 'rgba(0, 255, 65, 0.2)',
+              'hud-red': '#ff003c',
+            },
+            fontFamily: {
+              mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050505;
+        color: #e2e8f0;
+      }
+      /* Scanline effect for screen */
+      .scanline {
+        width: 100%;
+        height: 100px;
+        z-index: 10;
+        background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0, 255, 65, 0.1) 50%, rgba(0,0,0,0) 100%);
+        opacity: 0.1;
+        position: absolute;
+        bottom: 100%;
+        animation: scanline 10s linear infinite;
+        pointer-events: none;
+      }
+      @keyframes scanline {
+        0% { bottom: 100%; }
+        100% { bottom: -100px; }
+      }
+
+      /* Animation for the object detection box internal scanner */
+      @keyframes box-scan {
+        0% { top: 0%; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+      }
+      .animate-box-scan {
+        animation: box-scan 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
